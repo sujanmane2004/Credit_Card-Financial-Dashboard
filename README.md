@@ -7,8 +7,15 @@ Credit Card Transaction Report Key Features:
     Granular Breakdowns: Dive deeper with breakdowns by card category (Blue, Silver, Gold, Platinum), expenditure type (bills, entertainment, fuel, grocery, food, travel), education level, and job type.
     Quarterly Trends: Visualize revenue and transaction patterns across Q1 to Q4, helping you spot seasonal trends.
     User-Friendly Design: Intuitive bar graphs, tables, and clean visuals make data exploration a breeze. 
-Csutomer Report Key Features:
+Customer Report Key Features:
 
     Comprehensive Analytics: Tracks over 10.3K cardholders, with insights into acquisition costs, credit scores, and delinquencies.
     Revenue Insights: Presents revenue trends by year, quarter, month, day, and gender through an interactive line graph.
     Customer Demographics: Analyzes transactions by age and income groups, offering a deep dive into customer spending behavior.
+Revenue = SUMX(credit_card, credit_card[Annual_Fees] + credit_card[Interest_Earned] + credit_card[Total_Trans_Amt])
+
+Prev Week Revenue =  CALCULATE([Revenue], 
+                        FILTER(ALL('credit_card'),
+                            'credit_card'[Week_Start_Date] = MAX('credit_card'[Week_Start_Date]) - 7))
+                            
+W/W revenue change = DIVIDE(([Revenue]-[Prev Week Revenue]), [Prev Week Revenue])
