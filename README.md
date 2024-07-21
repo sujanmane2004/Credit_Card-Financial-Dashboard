@@ -12,10 +12,12 @@ Customer Report Key Features:
     Comprehensive Analytics: Tracks over 10.3K cardholders, with insights into acquisition costs, credit scores, and delinquencies.
     Revenue Insights: Presents revenue trends by year, quarter, month, day, and gender through an interactive line graph.
     Customer Demographics: Analyzes transactions by age and income groups, offering a deep dive into customer spending behavior.
-Revenue = SUMX(credit_card, credit_card[Annual_Fees] + credit_card[Interest_Earned] + credit_card[Total_Trans_Amt])
+Dax Queries :
+          
+     Revenue = SUMX(credit_card, credit_card[Annual_Fees] + credit_card[Interest_Earned] + credit_card[Total_Trans_Amt])
 
-Prev Week Revenue =  CALCULATE([Revenue], 
+     Prev Week Revenue =  CALCULATE([Revenue], 
                         FILTER(ALL('credit_card'),
                             'credit_card'[Week_Start_Date] = MAX('credit_card'[Week_Start_Date]) - 7))
                             
-W/W revenue change = DIVIDE(([Revenue]-[Prev Week Revenue]), [Prev Week Revenue])
+     W/W revenue change = DIVIDE(([Revenue]-[Prev Week Revenue]), [Prev Week Revenue])
